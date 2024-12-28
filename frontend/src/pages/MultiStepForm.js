@@ -230,31 +230,53 @@ const MultiStepForm = () => {
     }));
   };
 
-  // above for step 6
+  const prepareFormData = () => {
+    const preparedData = { ...formData };
+
+    // Convert monthlyRent to a number
+    if (preparedData.step2.monthlyRent) {
+      preparedData.step2.monthlyRent = parseFloat(preparedData.step2.monthlyRent);
+    }
+
+    // Convert balances in financialDetails to numbers
+    preparedData.step4.financialDetails = preparedData.step4.financialDetails.map((detail) => ({
+      ...detail,
+      balance: parseFloat(detail.balance) || 0,
+    }));
+
+    return preparedData;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const preparedData = prepareFormData();
+
     try {
-      console.log("Form data being sent:", FormData); // Log the form data
+      console.log("Form data being sent:", preparedData);
       const response = await fetch("http://localhost:5000/api/submit-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(preparedData),
       });
-  
+      console.log("Form data being sent:", JSON.stringify(preparedData, null, 2));
+
+
       if (!response.ok) {
         throw new Error("Failed to submit form");
       }
-  
+
       const result = await response.json();
       console.log("Form submitted successfully:", result);
+      alert("Form submitted successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
+      alert("Error submitting form. Please try again.");
     }
   };
-  
-  
+
+ 
   
   
   const steps = [
