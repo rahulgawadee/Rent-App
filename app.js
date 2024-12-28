@@ -52,7 +52,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./frontend/build/index.html"));
 });
 
-// Middleware for Error Handling
+// Middleware for Error Handlingg
 app.use(errorMiddleware);
 
 // Start the server
