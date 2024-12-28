@@ -1,79 +1,76 @@
-// models/FormData.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// Define the schema for the form data
-const formDataSchema = new mongoose.Schema({
+const OccupantSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  dob: { type: Date, required: true },
+  relationship: { type: String, required: true },
+});
+
+const EmployerSchema = new mongoose.Schema({
+  employerName: { type: String, required: true },
+  occupation: { type: String, required: true },
+  employerAddress: { type: String, required: true },
+  employerPhone: { type: String, required: true },
+  startDate: { type: Date, required: true },
+  monthlyPay: { type: Number, required: true },
+  supervisorName: { type: String, required: true },
+});
+
+const FinancialDetailSchema = new mongoose.Schema({
+  type: { type: String, required: true },
+  bank: { type: String, required: true },
+  balance: { type: Number, required: true },
+});
+
+const ReferenceSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  phone: { type: String, required: true },
+  relationship: { type: String, required: true },
+});
+
+const BackgroundInfoSchema = new mongoose.Schema({
+  lateRent: { type: String, required: true },
+  lawsuit: { type: String, required: true },
+  smoke: { type: String, required: true },
+  pets: { type: String, required: true },
+});
+
+const TenantForm = new mongoose.Schema({
   step1: {
     propertyAddress: { type: String, required: true },
     firstName: { type: String, required: true },
-    middleName: { type: String, default: "" },
+    middleName: { type: String },
     lastName: { type: String, required: true },
-    birthDate: { type: String, default: "" },
-    socialSecurity: { type: String, default: "" },
+    birthDate: { type: Date, required: true },
+    socialSecurity: { type: String, required: true },
     emailAddress: { type: String, required: true },
     phoneNumber: { type: String, required: true },
-    driversLicense: { type: String, default: "" },
+    driversLicense: { type: String, required: true },
   },
   step2: {
-    occupants: [
-      {
-        name: { type: String, required: true },
-        dob: { type: String, required: true },
-        relationship: { type: String, required: true },
-      },
-    ],
-    housingVoucher: { type: String, default: "" },
-    priorAddress: { type: String, required: true },
-    monthlyRent: { type: String, default: "" },
-    startDate: { type: String, default: "" },
-    endDate: { type: String, default: "" },
-    reasonForMoving: { type: String, default: "" },
-    ownerManagerName: { type: String, default: "" },
-    ownerManagerPhone: { type: String, default: "" },
+    occupants: [OccupantSchema],
+    housingVoucher: { type: String },
+    priorAddress: { type: String },
+    monthlyRent: { type: Number },
+    startDate: { type: Date },
+    endDate: { type: Date },
+    reasonForMoving: { type: String },
+    ownerManagerName: { type: String },
+    ownerManagerPhone: { type: String },
   },
   step3: {
-    employers: [
-      {
-        employerName: { type: String, required: true },
-        occupation: { type: String, required: true },
-        employerAddress: { type: String, required: true },
-        employerPhone: { type: String, required: true },
-        startDate: { type: String, required: true },
-        monthlyPay: { type: String, required: true },
-        supervisorName: { type: String, required: true },
-      },
-    ],
+    employers: [EmployerSchema],
   },
   step4: {
-    financialDetails: [
-      {
-        type: { type: String, default: "Checking Account" },
-        bank: { type: String, required: true },
-        balance: { type: String, required: true },
-      },
-    ],
+    financialDetails: [FinancialDetailSchema],
   },
   step5: {
-    references: [
-      {
-        name: { type: String, required: true },
-        phone: { type: String, required: true },
-        relationship: { type: String, required: true },
-      },
-    ],
-    backgroundInfo: {
-      lateRent: { type: String, default: "" },
-      lawsuit: { type: String, default: "" },
-      smoke: { type: String, default: "" },
-      pets: { type: String, default: "" },
-    },
+    references: [ReferenceSchema],
+    backgroundInfo: BackgroundInfoSchema,
   },
   step6: {
-    comments: { type: String, default: "" },
+    comments: { type: String },
   },
 });
 
-// Create the model based on the schema
-const FormData = mongoose.model('FormData', formDataSchema);
-
-module.exports = FormData;
+module.exports = mongoose.model("Form", TenantForm);

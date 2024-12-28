@@ -260,8 +260,7 @@ const MultiStepForm = () => {
         },
         body: JSON.stringify(preparedData),
       });
-      console.log("Form data being sent:", JSON.stringify(preparedData, null, 2));
-
+      
 
       if (!response.ok) {
         throw new Error("Failed to submit form");
