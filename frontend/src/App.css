@@ -1,0 +1,83 @@
+/* Make the body take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Make the app container take the full height */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; /* Prevent unwanted scrollbars on the container */
+  }
+  
+ 
+  
+  /* Custom Scrollbar for Webkit Browsers */
+  ::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(to right, #25beff, #66afea); /* Gradient track */
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #0000ff, #8bc34a); /* Gradient thumb */
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* Add some space around the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, #388e3c, #81c784); /* Thumb hover gradient */
+  }
+  
+  /* This will take the available space between the content and the footer */
+  .content {
+    flex: 1;
+  }
+  
+  .link{
+    color: white;
+    
+  }
+  /* Footer styling */
+  footer {
+    background: var(--gradient);
+    color: white;
+    padding: 5rem 5%;
+    text-align: center;
+    position: relative;
+    height: fit-content;
+    
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: inherit;
+    transform: skewY(-1deg);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
