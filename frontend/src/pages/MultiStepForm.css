@@ -1,4 +1,41 @@
 /* MultiStepForm.css */
+.error-message {
+  color: #ff4d4d; /* Red color for error message */
+  font-size: 0.875rem; /* Smaller font size */
+  margin-top: 0.25rem; /* Space between input and error message */
+  display: block; /* Makes sure the error message is on a new line */
+  font-weight: 100; /* Make the error message bold */
+}
+.input-error {
+  border: 1px solid red; /* Red border for invalid inputs */
+}
+.section8{
+  color: red;
+  font-weight: bold;
+  
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.error-message {
+  color: red; /* Red text for error messages */
+  font-size: 12px; /* Smaller font size for error messages */
+  margin-top: 4px; /* Space between the input and the error message */
+}
+
+/* Optional: Style for the input field when there is an error */
+.form-input:invalid {
+  border-color: #ff4d4d; /* Red border for invalid inputs */
+  box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.3); /* Soft red shadow */
+}
 
 /* Container Styling */
 .form-container-multi-step {
@@ -6,7 +43,7 @@
     /* max-width: 800px; */
     margin: 2rem auto;
     padding: 2rem;
-    background: #ffffff;
+    
     /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); */
     /* border-radius: 10px; */
     overflow: hidden;
@@ -94,7 +131,7 @@
   
   .form-title-property-info {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -403,7 +440,17 @@
 /* References Section */
 .references-section {
   margin-bottom: 20px;
+  display: inline;
+
 }
+
+.required {
+  color: red;
+  margin-left: 4px; /* Adjust this if needed to control spacing */
+}
+
+
+
 
 .reference-entry {
   display: flex;
@@ -437,6 +484,7 @@
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
   outline: none;
 }
+
 
 .btn-remove-reference {
   padding: 0.5rem 1rem;
@@ -513,6 +561,7 @@
 .background-info input[type="radio"]:hover {
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
